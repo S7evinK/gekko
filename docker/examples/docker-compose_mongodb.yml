@@ -17,7 +17,5 @@ services:
       - mongo_store:/data/db
 
 volumes:
-  history: # create volume for sqlite
-    driver: local
   mongo_store: # create volume for mongodb
     driver: local
