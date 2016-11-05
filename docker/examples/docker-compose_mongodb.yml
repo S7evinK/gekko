@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  gekko:
+    image: s73vink/gekko
+    depends_on:
+      - mongodb
+    restart: always
+    volumes:
+      - $(pwd)/configs/config_mongodb.js:/home/gekko/gekko/config.js # mount your config here
+    command: node gekko.js
+
+  mongodb:
+    restart: always
+    image: mongo:3.3
+    volumes:
+      - mongo_store:/data/db
+
+volumes:
+  history: # create volume for sqlite
+    driver: local
+  mongo_store: # create volume for mongodb
+    driver: local
