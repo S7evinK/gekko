@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  gekko:
+    image: s73vink/gekko
+    depends_on:
+      - redis
+    volumes:
+      - $(pwd)/configs/config_btce_ltc_usd.js:/home/gekko/gekko/config.js # mount your config WITH enabled redis here
+
+  redis:
+    restart: always
+    image: redis:3.2.4-alpine
+
+volumes:
+  history:
+    driver: local

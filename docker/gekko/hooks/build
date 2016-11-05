@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+echo "------ HOOK START - BUILD -------"
+printenv
+
+if [ $SOURCE_BRANCH = "master" ]; then
+  SOURCE_BRANCH=develop
+fi
+
+echo "SOURCE_BRANCH -> $SOURCE_BRANCH"
+
+docker build \
+  --build-arg REPOSITORY=$REPOSITORY \
+  --build-arg BRANCH=$SOURCE_BRANCH \
+  --build-arg ADDITIONAL_PACKAGES=$ADDITIONAL_PACKAGES \
+  -t $IMAGE_NAME .
+
+echo "------ HOOK END - BUILD -------"

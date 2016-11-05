@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  gekko:
+    image: s73vink/gekko
+    restart: always
+    volumes:
+      - history:/home/gekko/gekko/history
+      - $(pwd)/configs/config_btce_btc_usd.js:/home/gekko/gekko/config.js # mount your config here
+    command: node gekko.js
+
+volumes:
+  history:
+    driver: local

@@ -110,12 +110,13 @@ Reader.prototype.getBoundry = function getBoundry (next) {
 }
 
 Reader.prototype.tableExists = function(name, next) {
+  var collectionName = `${mongoUtil.settings.exchange.toLowerCase()}_${name}`; // prefix exchange name
   this.db.getCollectionNames((err, names) => {
     if (err) {
       log.debug(err);
       return util.die('DB error at `tableExists`');
     }
-    next(null, names.indexOf(name) > -1);
+    next(null, names.indexOf(collectionName) > -1);
   });
 }
 
