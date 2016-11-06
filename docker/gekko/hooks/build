@@ -3,8 +3,16 @@
 echo "------ HOOK START - BUILD -------"
 printenv
 
+if [ $DOCKER_TAG = "latest" ]; then
+  SOURCE_BRANCH=develop
+elif [ $DOCKER_TAG = "stable" ]; then
+  SOURCE_BRANCH=stable
+fi
+
+echo
 echo "SOURCE_BRANCH -> $SOURCE_BRANCH"
 echo "executed command -> docker build --build-arg REPOSITORY=\"$REPOSITORY\" --build-arg BRANCH=\"$SOURCE_BRANCH\" --build-arg ADDITIONAL_PACKAGES=\"$ADDITIONAL_PACKAGES\" -t $IMAGE_NAME ."
+echo
 
 docker build \
   --build-arg REPOSITORY="$REPOSITORY" \
