@@ -8,10 +8,9 @@ if [ $SOURCE_BRANCH != "develop" ]; then
 fi
 
 echo "SOURCE_BRANCH -> $SOURCE_BRANCH"
-echo "executed command -> docker build -f \"$BUILD_PATH\" --build-arg REPOSITORY=\"$REPOSITORY\" --build-arg BRANCH=\"$SOURCE_BRANCH\" --build-arg ADDITIONAL_PACKAGES=\"$ADDITIONAL_PACKAGES\" -t $IMAGE_NAME ."
+echo "executed command -> docker build --build-arg REPOSITORY=\"$REPOSITORY\" --build-arg BRANCH=\"$SOURCE_BRANCH\" --build-arg ADDITIONAL_PACKAGES=\"$ADDITIONAL_PACKAGES\" -t $IMAGE_NAME ."
 
 docker build \
-  -f "$BUILD_PATH" \
   --build-arg REPOSITORY="$REPOSITORY" \
   --build-arg BRANCH="$SOURCE_BRANCH" \
   --build-arg ADDITIONAL_PACKAGES="$ADDITIONAL_PACKAGES" \
