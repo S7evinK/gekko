@@ -46,7 +46,7 @@ Run with history inside docker volume:
 ```
 docker run -d --name gekko \
 -v $(pwd)/sample-config.js:/home/gekko/gekko/config.js \
--v gekko_data:/home/gekko/gekko/history/ \ s73vink/gekko:latest
+-v gekko_data:/home/gekko/gekko/history/ s73vink/gekko:latest
 ```
 
 ## Running backtests
@@ -55,7 +55,7 @@ Run backtests with mounted config and history:
 ```
 docker run -d --name gekko \
 -v $(pwd)/sample-config.js:/home/gekko/gekko/config.js \
--v gekko_data:/home/gekko/gekko/history/ \ s73vink/gekko:latest node gekko.js --backtest
+-v gekko_data:/home/gekko/gekko/history/ s73vink/gekko:latest node gekko.js --backtest
 ```
 
 

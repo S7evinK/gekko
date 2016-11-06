@@ -10,6 +10,7 @@ fi
 echo "SOURCE_BRANCH -> $SOURCE_BRANCH"
 
 docker build \
+  -f $BUILD_PATH \
   --build-arg REPOSITORY=$REPOSITORY \
   --build-arg BRANCH=$SOURCE_BRANCH \
   --build-arg ADDITIONAL_PACKAGES=$ADDITIONAL_PACKAGES \
