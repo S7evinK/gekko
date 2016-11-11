@@ -7,7 +7,7 @@ services:
       - mongodb
     restart: always
     volumes:
-      - $(pwd)/configs/config_mongodb.js:/home/gekko/gekko/config.js # mount your config here
+      - ./configs/config_mongodb.js:/home/gekko/gekko/config.js # mount your config here
     command: node gekko.js
 
   mongodb:

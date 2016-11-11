@@ -6,7 +6,7 @@ services:
     depends_on:
       - redis
     volumes:
-      - $(pwd)/configs/config_btce_ltc_usd.js:/home/gekko/gekko/config.js # mount your config WITH enabled redis here
+      - ./configs/config_btce_ltc_usd.js:/home/gekko/gekko/config.js # mount your config WITH enabled redis here
 
   redis:
     restart: always
