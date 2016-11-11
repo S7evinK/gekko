@@ -74,10 +74,13 @@ var util = {
     + `\nNodejs version: ${process.version}`;
   },
   die: function(m, soft) {
-    if(_gekkoEnv === 'standalone')
+    let _gekkoEnv = this.gekkoEnv();
+
+    if (_gekkoEnv === 'standalone') {
       var log = console.log.bind(console);
-    else if(_gekkoEnv === 'child-process')
+    } else if (_gekkoEnv === 'child-process') {
       var log = m => process.send({type: 'error', error: m});
+    }
 
     if(m) {
       if(soft) {
