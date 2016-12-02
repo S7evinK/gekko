@@ -6,10 +6,11 @@ module.exports = function(config, done) {
 
   task.send('start', config);
 
-  task.once('ranges', ranges => done(false, ranges));
+  task.once('ranges', ranges => {
+    return done(false, ranges);
+  });
   task.on('exit', code => {
-
     if(code !== 0)
-      handler('log')('ERROR, unable to scan dateranges, please check the console.');
+      done('ERROR, unable to scan dateranges, please check the console.');
   });
 }
